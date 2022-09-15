@@ -153,7 +153,7 @@ func (srv *httpRequest) ClientRequest(url string, method string, payload []byte)
 	if srv.Header.Authorization.Token != "" && srv.Header.Authorization.Type != "" {
 		request.Header.Set("Authorization", strings.Join([]string{srv.Header.Authorization.Type, srv.Header.Authorization.Token}, " "))
 	} else {
-		if srv.Header.Authorization.Type != "" {
+		if srv.Header.Authorization.Type == "" {
 			request.Header.Set("Authorization", strings.Join([]string{"Bearer", srv.Header.Authorization.Token}, " "))
 		}
 	}
