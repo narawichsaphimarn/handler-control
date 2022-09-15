@@ -158,6 +158,7 @@ func (srv *httpRequest) ClientRequest(url string, method string, payload []byte)
 	if err != nil {
 		return nil, fmt.Errorf("%s{%v}", "Error step read body.Error msg : ", err)
 	}
+	response.Body.Close()
 	return payloadBody, nil
 }
 
