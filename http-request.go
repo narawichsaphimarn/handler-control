@@ -149,7 +149,7 @@ func (srv *httpRequest) ClientRequest(url string, method string, payload []byte)
 		request.Header.Add(XRequestID, srv.Header.XRequestID)
 	}
 
-	request.Header.Set("Content-type", "application/json")
+	request.Header.Set("Content-type", srv.Header.ContentType)
 	response, err := client.Do(request)
 	if err != nil {
 		return nil, fmt.Errorf("%s{%v}", "Error step HTTP sent request.Error msg : ", err)
